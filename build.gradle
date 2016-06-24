@@ -1,0 +1,55 @@
+apply plugin : 'java'
+apply plugin : 'war'
+apply from   : 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+
+
+compileJava.options.compilerArgs.add '-g'
+webAppDirName = 'webapp'
+
+
+
+sourceSets {
+    main {
+        java { srcDir 'src'}
+        resources {
+            srcDir 'src'
+            include '**/*.properties'
+            include '**/*.xml'
+        }
+    }
+}
+
+
+buildscript {
+
+  repositories {
+      mavenCentral()
+  }
+
+}
+
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    compile group: 'org.springframework', name: 'spring-context', version: '3.1.4.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws
+    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxws', version: '2.7.18'
+    // https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http
+    compile group: 'org.apache.cxf', name: 'cxf-rt-transports-http', version: '2.7.18'
+}
+
+
+gretty {
+    port = 8080
+    jvmArgs = [
+            '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044'
+    ]
+}
+
+

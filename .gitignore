@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+build/
+common_build.xml
+orderapp.iml
+target/
+
