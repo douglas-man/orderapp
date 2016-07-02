@@ -65,6 +65,7 @@
                   <webAppConfig>
                       <descriptor>${basedir}/webapp/WEB-INF/web.xml</descriptor>
                   </webAppConfig>
+				  <httpConnector><port>9000</port></httpConnector>
               </configuration>
               <executions>
                   <execution>
